@@ -1,24 +1,34 @@
 #!/usr/bin/python3
 """Defines the module base_model"""
 
+
 import uuid
 import datetime
 """Defines the imported modules"""
 
 
 class BaseModel:
-    def __init__(self): 
-        """Defines the class BaseModel"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+    """Defines the  class BaseModel that creates an object"""
+    def __init__(self, *args, **kwargs):
+        """Defines the constructor for the class BaseModel"""
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue
+                if key in ['created_at', 'updated_at']:
+                    value = datetime.datetime.strptime(value,
+                            '%Y-%m-%dT%H:%M:%S.%f')
+                setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """
         Defines a magic method prints:[<class name>](<self.id>) <self.__dict__>
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-        self.__dict__)
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """Updates the public instance attribute, with the current datetime"""
