@@ -43,11 +43,17 @@ class FileStorage:
         nothing occurs. If the file doesn’t exist, no exception is raised)
         """
         from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         """Defines the imported model method Basemodel"""
         try:
             with open(FileStorage.__file_path, 'r') as file:
                 obj_dict = json.load(file)
-                for key , value in obj_dict.items():
+                for key, value in obj_dict.items():
                     class_name, obj_id = key.split('.')
                     obj = eval(class_name)(**value)
                     FileStorage.__objects[key] = obj
