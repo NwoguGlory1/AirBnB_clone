@@ -8,6 +8,7 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """Defines the test for the class BaseModel"""
+
     def test_base_model(self):
         my_model = BaseModel()
         my_model.name = "My First Model"
@@ -16,11 +17,11 @@ class TestBaseModel(unittest.TestCase):
             my_model.__class__.__name__, my_model.id, my_model.__dict__))
 
     def test_save(self):
-       """Defines a test for the save method"""
-       my_model = BaseModel()
-       old_updated_at = my_model.updated_at
-       my_model.save()
-       self.assertNotEqual(old_updated_at, my_model.updated_at)
+        """Defines a test for the save method"""
+        my_model = BaseModel()
+        old_updated_at = my_model.updated_at
+        my_model.save()
+        self.assertNotEqual(old_updated_at, my_model.updated_at)
 
     def test_to_dict(self):
         """Defines the test for the to_dict method"""
@@ -37,7 +38,7 @@ class TestBaseModel(unittest.TestCase):
                 '__class__': 'BaseModel'
                 }
         self.assertDictEqual(my_model_json, expected_dict)
-    
+
     def setup(self):
         """Defines the setup method for the test"""
         pass
