@@ -107,7 +107,13 @@ class HBNBCommand(cmd.Cmd):
         class name.
         """
         objs = []
-        if arg in ["BaseModel"] or len(arg) == 0:
+        if arg in ["BaseModel", "User", "State", "City", "Amenity", "Place",
+                   "Review"]:
+            for obj in storage.all().values():
+                if obj.__class__.__name__ == arg:
+                    objs.append(str(obj))
+            print(objs)
+        elif len(arg) == 0:
             for obj in storage.all().values():
                 objs.append(str(obj))
             print(objs)
@@ -144,6 +150,15 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()[key]
         setattr(obj, args[2], eval(args[3]))
         obj.save()
+
+    def do_count(self, arg):
+        """Retrieve the number of instances of a class and prints it out"""
+        count = 0
+        for key in storage.all():
+            args = key.split('.')
+            if args[0] == arg:
+                count += 1
+        print(count)
 
 
 if __name__ == '__main__':
