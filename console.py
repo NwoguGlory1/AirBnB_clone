@@ -39,6 +39,7 @@ class HBNBCommand(cmd.Cmd):
         Creates a new instance of BaseModel, saves it (to the JSON file) and
         prints the id.
         """
+        args = arg.split()
         if arg:
             pass
         else:
