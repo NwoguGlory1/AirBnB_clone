@@ -2,7 +2,7 @@
 """Defines the unittest for amenity"""
 
 
-from models.base_model import BaseModel
+import unittest
 from models.amenity import Amenity
 """Defines the imported modules"""
 

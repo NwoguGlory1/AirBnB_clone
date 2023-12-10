@@ -12,7 +12,7 @@ class Place(BaseModel):
     """Defines the child class Place that inherits from the class BaseModel"""
     city_id = ""
     user_id = ""
-    namr = ""
+    name = ""
     description = ""
     number_rooms = 0
     number_bathrooms = 0
@@ -20,4 +20,4 @@ class Place(BaseModel):
     price_by_night = 0
     latitude = 0.0
     longitude = 0.0
-    amenity_ids = []
+    amenity_ids = [""]

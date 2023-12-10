@@ -4,6 +4,7 @@
 
 import unittest
 from models.state import State
+"""Defines the imported modules"""
 
 
 class TestState(unittest.TestCase):
