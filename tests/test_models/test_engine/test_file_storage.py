@@ -142,7 +142,7 @@ class TestFileStorage7Methods(unittest.TestCase):
 
         # Add assertions for reload() based on your implementation
 
-    def test_reload_with_arg(self):
+        def test_reload_with_arg(self):
         """Defines the test for reload() with an argument"""
         with self.assertRaises(TypeError):
             self.file_storage.reload(None)
